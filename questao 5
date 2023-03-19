@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class MatrizMedia {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String[][] alunos = new String[3][5];
+
+        // Solicitação dos nomes e notas dos alunos
+        for(int i = 0; i < alunos.length; i++) {
+            System.out.println("Aluno " + (i+1) + ": ");
+            System.out.print("Digite o nome do aluno: ");
+            alunos[i][0] = input.nextLine();
+
+            double soma = 0;
+
+            for(int j = 1; j < 5; j++) {
+                System.out.print("Digite a " + j + "ª nota: ");
+                alunos[i][j] = input.nextLine();
+                soma += Double.parseDouble(alunos[i][j]);
+            }
+
+            double media = soma / 4;
+            alunos[i][4] = Double.toString(media);
+        }
+
+        // Impressão dos nomes e médias dos alunos
+        for(int i = 0; i < alunos.length; i++) {
+            System.out.println(alunos[i][0] + " - Média: " + alunos[i][4]);
+        }
+
+        // Busca do aluno com maior e menor média
+        int indiceMaior = 0, indiceMenor = 0;
+        double maiorMedia = Double.parseDouble(alunos[0][4]), menorMedia = Double.parseDouble(alunos[0][4]);
+
+        for(int i = 1; i < alunos.length; i++) {
+            double media = Double.parseDouble(alunos[i][4]);
+
+            if(media > maiorMedia) {
+                indiceMaior = i;
+                maiorMedia = media;
+            }
+
+            if(media < menorMedia) {
+                indiceMenor = i;
+                menorMedia = media;
+            }
+        }
+
+        System.out.println("Aluno com maior média: " + alunos[indiceMaior][0]);
+        System.out.println("Aluno com menor média: " + alunos[indiceMenor][0]);
+
+        input.close();
+    }
+}
