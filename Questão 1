@@ -1,0 +1,36 @@
+Solicitar a inserção de 5 números, ao final, imprimir os números pares, números ímpares e a média geral desses números.
+
+import java.util.Scanner;
+
+public class NumerosParesImparesMedia {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        int numero;
+        int soma = 0;
+        int qtdNumeros = 0;
+        int qtdPares = 0;
+        int qtdImpares = 0;
+
+        for(int i=1; i<=5; i++) {
+            System.out.print("Digite o " + i + "º número: ");
+            numero = input.nextInt();
+            soma += numero;
+            qtdNumeros++;
+            if(numero % 2 == 0) {
+                qtdPares++;
+                System.out.println(numero + " é par");
+            } else {
+                qtdImpares++;
+                System.out.println(numero + " é ímpar");
+            }
+        }
+        
+        double media = (double)soma / qtdNumeros;
+        System.out.println("Média geral: " + media);
+        System.out.println("Quantidade de números pares: " + qtdPares);
+        System.out.println("Quantidade de números ímpares: " + qtdImpares);
+        
+        input.close();
+    }
+}
